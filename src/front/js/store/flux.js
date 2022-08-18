@@ -41,6 +41,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return setStore({loginuser: null})
 			},
 			signup: (data) => {
+				const {login} = getActions();
+				let info = {
+					username: data.username,
+					password: data.password
+				}
 				fetch(process.env.BACKEND_URL + "/api/signup",{
 					headers: {
 						'Content-Type': 'application/json'
@@ -53,7 +58,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.then(data=>{
 					alert(JSON.stringify(data))
 				})
+				.then(()=>login(info))
 				.catch(error=>console.log(error))
+		
 				return false
 			}
 			

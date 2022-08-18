@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 import "../../styles/home.css";
 
 
@@ -22,7 +23,8 @@ export const Home = () => {
 			password: password,
 			is_active: false
 		}
-		actions.signup(data);
+		actions.signup(data)
+
 		return false;
 	}
 
@@ -32,6 +34,7 @@ export const Home = () => {
 			<div>
 			<h1>Bienvenido {store.loginuser?.username} !</h1>
 			<p>Estas usando un token para identificarte que se borrara cuando hagas logout o cierres la pestaña</p>
+			<p>Pincha este <Link to="/private" className="btn btn-secondary">Boton</Link> para dirigirte a la seccion privada</p>
 			</div>
 			
 			

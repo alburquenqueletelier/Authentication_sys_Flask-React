@@ -1,11 +1,12 @@
 import React, {useContext, useState} from "react";
-import { Navigate  } from "react-router-dom";
+import { Navigate, useNavigate  } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Navbar = () => {
 	const {store, actions} = useContext(Context);
 	const [user, setUser] = useState('');
 	const [passUser, setPassUser] = useState('');
+	const navigate = useNavigate();
 
 	const submitLogin = (e) => {
 		e.preventDefault();
@@ -17,6 +18,7 @@ export const Navbar = () => {
 			username: user,
 			password: passUser
 		}
+		
 		actions.login(data);
 		return false;
 	}
