@@ -40,14 +40,14 @@ def register():
     if request.method != 'POST':
         return jsonify({
         "Error": "Bad request"
-        }), 405
+        }), 400
     body = request.get_json()
     userQuery = User.query.filter_by(username=body["username"]).first()
     emailQuery = User.query.filter_by(email=body["email"]).first()
     if userQuery or emailQuery:
         return jsonify({
             "Error": "username o email en uso."
-        }), 403
+        }), 400
     newUser = User()
     try:
         newUser.username = body["username"]

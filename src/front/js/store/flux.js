@@ -46,19 +46,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 					username: data.username,
 					password: data.password
 				}
-				fetch(process.env.BACKEND_URL + "/api/signup",{
+				fetch(process.env.BACKEND_URL + "/api/signup", {
 					headers: {
 						'Content-Type': 'application/json'
 					  },
-					mode: 'cors',
 					method: 'POST',
 					body: JSON.stringify(data)
 				})
 				.then(resp=>resp.json())
 				.then(data=>{
 					alert(JSON.stringify(data))
+					if (!data.Error){
+						return login(info);
+					}
+					return false
 				})
-				.then(()=>login(info))
 				.catch(error=>console.log(error))
 		
 				return false

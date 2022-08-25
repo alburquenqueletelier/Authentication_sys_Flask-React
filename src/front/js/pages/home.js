@@ -39,7 +39,8 @@ export const Home = () => {
 			
 			
 			:<div>
-			<h1>Registrate o has login</h1>
+			<h1>Registrate o inicia sesión para acceder a tu sitio privado</h1>
+			<p className="text-center">Puedes tratar de acceder al sitio priviado sin login al agregar /private a la url o pinchando <Link to="/private">acá</Link> pero seras redireccionado a esta pagina por no estar autentificado</p>
 			<form onSubmit={(e)=>submitSignup(e)}>
 				<input type="text" placeholder="username" onChange={(e)=>setUsername(e.target.value)}></input>
 				<input type="email" placeholder="email" onChange={(e)=>setEmail(e.target.value)}></input>
