@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import { BrowserRouter, Route, Routes, History  } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./pages/home";
@@ -28,7 +28,7 @@ const Layout = () => {
                     <Routes>
                         <Route element={<Private></Private>} path="/private"/>
                         <Route element={<Home />} path="/" />
-                        <Route element={<h1>Not found!</h1>} />
+                        <Route element={<div className="text-center"><h1>Not found!</h1><Link className="btn btn-secondary" to="/">Home</Link></div>} path="*" />
                     </Routes>
                     <Footer />
                 </ScrollToTop>

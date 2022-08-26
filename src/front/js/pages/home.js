@@ -29,27 +29,29 @@ export const Home = () => {
 	}
 
 	return (
-		<div className="text-center mt-5">
+		<div className="container-fluid text-center mt-3">
 			{!!store.loginuser ?
 			<div>
-			<h1>Bienvenido {store.loginuser?.username} !</h1>
+			<h1 className="text-primary bg-dark p-1">Bienvenido {store.loginuser?.username} !</h1>
 			<p>Estas usando un token para identificarte que se borrara cuando hagas logout o cierres la pestaña</p>
-			<p>Pincha este <Link to="/private" className="btn btn-secondary">Boton</Link> para dirigirte a la seccion privada</p>
+			<p>Pincha este <Link to="/private" className="btn btn-warning">Boton</Link> para dirigirte a la seccion privada</p>
 			</div>
 			
 			
 			:<div>
-			<h1>Registrate o inicia sesión para acceder a tu sitio privado</h1>
-			<p className="text-center">Puedes tratar de acceder al sitio priviado sin login al agregar /private a la url o pinchando <Link to="/private">acá</Link> pero seras redireccionado a esta pagina por no estar autentificado</p>
-			<form onSubmit={(e)=>submitSignup(e)}>
-				<input type="text" placeholder="username" onChange={(e)=>setUsername(e.target.value)}></input>
-				<input type="email" placeholder="email" onChange={(e)=>setEmail(e.target.value)}></input>
-				<input type="password" placeholder="password" onChange={(e)=>setPassword(e.target.value)}></input>
-				<input type="password" placeholder="repeat password" onChange={(e)=>setPassword2(e.target.value)}></input>
-				<br></br>
-				<button type="submit">Enviar</button>
-			</form>
-		</div>
+				<h1 className="text-primary bg-dark p-1">Autenticación con JWT y protección de vista</h1>
+				<h2>Registrate o inicia sesión para acceder a tu sección privada</h2>
+				<p>Puedes tratar de acceder al sitio priviado sin login al agregar /private a la url o pinchando <Link to="/private">acá</Link> pero seras redireccionado a esta pagina por no estar autentificado</p>
+				<div className="row justify-content-center">
+				<form className="w-50 mb-2" onSubmit={(e)=>submitSignup(e)}>
+					<input className="form-control m-1" type="text" placeholder="username" onChange={(e)=>setUsername(e.target.value)}></input>
+					<input className="form-control m-1" type="email" placeholder="email" onChange={(e)=>setEmail(e.target.value)}></input>
+					<input className="form-control m-1" type="password" placeholder="password" onChange={(e)=>setPassword(e.target.value)}></input>
+					<input className="form-control m-1" type="password" placeholder="repeat password" onChange={(e)=>setPassword2(e.target.value)}></input>
+					<button type="submit" className="btn btn-primary mt-1">Enviar</button>
+				</form>
+				</div>
+			</div>
 			}
 		</div>
 	);

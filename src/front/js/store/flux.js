@@ -18,14 +18,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return resp.json();
 				})
 				.then(data=>{
-					sessionStorage.setItem('loginuser',JSON.stringify(data.user));
-					sessionStorage.setItem('token',JSON.stringify(data.token));
-					setStore({
-						loginuser: data.user,
-						token: data.token
-					});
+					if (data.msg){
+						return alert(data.msg)
+					} else {
+						sessionStorage.setItem('loginuser',JSON.stringify(data.user));
+						sessionStorage.setItem('token',JSON.stringify(data.token));
+						return setStore({
+							loginuser: data.user,
+							token: data.token
+						});
+					}
 				})
-				.catch(error=>console.log(error))
+				.catch(error=>alert(error.msg))
 				return false
 			},
 			loginRemember: ()=>{
@@ -38,7 +42,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			logout: () => {
 				sessionStorage.removeItem('loginuser');
-				return setStore({loginuser: null})
+				sessionStorage.removeItem('token');
+				return setStore({loginuser: null, token:null})
 			},
 			signup: (data) => {
 				const {login} = getActions();

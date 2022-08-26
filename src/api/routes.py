@@ -21,7 +21,7 @@ def create_token():
         user = User.query.filter_by(username=username, password=password).first()
     if user is None:
         # the user was not found on the database
-        return jsonify({"msg": "Bad username or password"}), 401
+        return jsonify({"msg": "Bad username or password"}), 400
     
     # create a new token with the user id inside
     access_token = create_access_token(identity=user.id)
