@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { Navigate, Link } from "react-router-dom";
+import { Modal } from "../component/modal"
 
 export const Private = () => {
   const { store, actions } = useContext(Context);
@@ -32,9 +33,9 @@ export const Private = () => {
             </figcaption>
           </figure>
 
-          
+          <Modal/>
 
-          <h5>
+          <h5 className="mt-2">
             Si quieres saber más de esta herramienta puedes visitar el sitio oficial en{" "}
             <a href="https://jwt.io/" target="blank">https://jwt.io/</a>
           </h5>

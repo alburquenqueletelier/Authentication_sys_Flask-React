@@ -45,10 +45,9 @@ export const Navbar = () => {
 			</div>
 			}
 			{store.loginuser &&
-			 <div className="row justify-content-end">
-				<div className="col-4">
-					<button className="text-center" type="button" onClick={()=>actions.logout()}>Logout</button>
-				</div>
+			 <div className="mt-2 ms-3">
+				<p className="navbar-brand d-inline-block">{store.loginuser.username}</p>
+				<button className="navbar-brand" type="button" onClick={()=>actions.logout()}>Logout</button>
 			 </div>
 			}
 		</nav>
