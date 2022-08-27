@@ -36,8 +36,6 @@ export const Home = () => {
 			<p>Estas usando un token para identificarte que se borrara cuando hagas logout o cierres la pestaña</p>
 			<p>Pincha este <Link to="/private" className="btn btn-warning">Boton</Link> para dirigirte a la seccion privada</p>
 			</div>
-			
-			
 			:<div>
 				<h1 className="text-primary bg-dark p-1">Autenticación con JWT y protección de vista</h1>
 				<h2>Registrate o inicia sesión para acceder a tu sección privada</h2>

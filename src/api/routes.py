@@ -31,7 +31,7 @@ def create_token():
 @jwt_required()
 def handle_hello():
     response_body = {
-        "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
+        "msg": "Esta alerta aparece cuando estas autenticado con JWT"
     }
     return jsonify(response_body), 200
 

@@ -69,8 +69,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.catch(error=>console.log(error))
 		
 				return false
-			}
+			},
 			
+			showMsg: ()=>{
+				const {token} = getStore();
+				// console.log(token);
+				if (!token){
+					return console.log('No te has autenticado')
+				}
+				fetch(process.env.BACKEND_URL + "/api/hello", {
+					headers: {
+						"Authorization": "Bearer "+token
+					}
+				})
+				.then(resp=>{
+					return resp.json()
+				})
+				.then(data => {
+					if (data.msg)
+						return alert(data.msg)
+				})
+			}
 		}
 	};
 };

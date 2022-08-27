@@ -26,30 +26,24 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-light bg-light">
 			{!store.loginuser &&
-			<div className="container">
-				<form className="row" onSubmit={(e)=> submitLogin(e)}>
-					<div className="col-auto">
-						<label className="sr-only" htmlFor="inlineFormInputName2">Username/Email</label>
-						<input onChange={(e)=>setUser(e.target.value)} type="text" className="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Enter username or email"/>
-					</div>
-					<div className="col-auto">
-						<label className="sr-only" htmlFor="inlineFormInputGroupUsername2">Username</label>
-						<div className="input-group mb-2 mr-sm-2">
-							<input onChange={(e)=>setPassUser(e.target.value)} type="password" className="form-control" id="inlineFormInputGroupUsername2" placeholder="Password"/>
-						</div>
-					</div>
-					<div className="col-auto">
-						<button type="submit" className="btn btn-primary mb-2">Submit</button>
-					</div>
+			<div className="container-fluid mb-1">
+				<form className="d-flex" onSubmit={(e)=> submitLogin(e)}>
+					<input onChange={(e)=>setUser(e.target.value)} type="text" className="form-control me-2" id="inlineFormInputName2" placeholder="Enter username or email"/>
+					<input onChange={(e)=>setPassUser(e.target.value)} type="password" className="form-control me-2" id="inlineFormInputGroupUsername2" placeholder="Password"/>
+					<button type="submit" className="btn btn-primary">Submit</button>
 			  	</form>
-			</div>
+				  </div>
 			}
 			{store.loginuser &&
-			 <div className="mt-2 ms-3">
-				<p className="navbar-brand d-inline-block">{store.loginuser.username}</p>
-				<button className="navbar-brand" type="button" onClick={()=>actions.logout()}>Logout</button>
+			 <div className="container-fluid">
+				<div className="d-flex">
+				<p className="navbar-brand d-inline-block">{store.loginuser.username} <button className="btn btn-secondary" type="button" onClick={()=>actions.logout()}>Logout</button></p>
+				</div>
 			 </div>
 			}
+			<div className="row ms-3">
+				<button className="navbar-brand btn btn-warning" onClick={()=>actions.showMsg()}>Solo funciono si estás autentificado</button>
+			</div>
 		</nav>
 	);
 };
