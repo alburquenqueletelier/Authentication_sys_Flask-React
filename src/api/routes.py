@@ -15,10 +15,21 @@ def create_token():
     username = body["username"]
     password = body["password"]
     # Query your database for username and password
+    
     if username.find('@')>=0:
-        user = User.query.filter_by(email=username, password=password).first()
-    else:
+        checkuser = User.query.filter_by(email=username).first()
+        if checkuser:
+            user = User.query.filter_by(email=username, password=password).first()
+        else:
+            return jsonify({
+                "msg":"Wrong user or doesn't exist"
+            })
+    elif User.query.filter_by(username=username).first():
         user = User.query.filter_by(username=username, password=password).first()
+    else:
+        return jsonify({
+            "msg":"Wrong user or doesn't exist"
+        })
     if user is None:
         # the user was not found on the database
         return jsonify({"msg": "Bad username or password"}), 400
